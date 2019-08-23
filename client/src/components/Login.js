@@ -6,6 +6,7 @@ const Login = (props) => {
   const [creds, setCreds] = useState({username: '', password: '' })
 
 const handleChange = event => {
+  event.preventDefault()
   setCreds({...creds, [event.target.name]: event.target.value })
 }
 
