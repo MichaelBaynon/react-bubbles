@@ -18,14 +18,26 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+
+    axios.put(`http://localhost:5000/api/colors/:id`, colors)
+    .then(res => {
+        colors.history.push('/')
+    })
+    .catch(err => console.log(err.response))
+
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
   };
 
-  const deleteColor = color => {
-    // make a delete request to delete this color
-  };
+ const deleteColor = event => {
+  
+   axios.delete(`http://localhost:5000/api/colors/${this.state.colors.id}`)
+   .then(res => {
+     this.props.history.push('/')
+   })
+   .catch(err => console.log(err.response))
+ }
 
   return (
     <div className="colors-wrap">
