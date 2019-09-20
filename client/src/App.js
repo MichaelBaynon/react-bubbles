@@ -1,11 +1,9 @@
-  
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import Login from "./components/Login";
 import "./styles.scss";
-import PrivateRoute from './components/PrivateRoute'
-import BubblePage from './components/BubblePage'
+import PrivateRoute from "./components/PrivateRoute";
+import BubblePage from "./components/BubblePage";
 
 function App() {
   const [colorList, setColorList] = useState([]);
@@ -13,7 +11,7 @@ function App() {
     <Router>
       <div className="App">
         <Route exact path="/" component={Login} />
-        <PrivateRoute  path='/bubblesPage' component={BubblePage} />
+        <PrivateRoute path="/bubblesPage" component={BubblePage} />
       </div>
     </Router>
   );
