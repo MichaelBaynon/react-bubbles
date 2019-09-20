@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import axiosWithAuth from '../helpers/axiosWithAuth'
 
 const initialColor = {
   color: "",
@@ -8,6 +7,7 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
+  console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -18,16 +18,13 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-    console.log(colorToEdit.id);
-    axiosWithAuth()
-      .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
-      .catch(err => console.log(err.response));
+    // Make a put request to save your updated color
+    // think about where will you get the id from...
+    // where is is saved right now?
   };
 
   const deleteColor = color => {
-    axiosWithAuth()
-      .delete(`http://localhost:5000/api/colors/${colorToEdit.id}`)
-      .catch(err => console.log(err.response));
+    // make a delete request to delete this color
   };
 
   return (
@@ -74,9 +71,7 @@ const ColorList = ({ colors, updateColors }) => {
             />
           </label>
           <div className="button-row">
-            <button type="submit" onClick={event => saveEdit(event, colors)}>
-              save
-            </button>
+            <button type="submit">save</button>
             <button onClick={() => setEditing(false)}>cancel</button>
           </div>
         </form>
